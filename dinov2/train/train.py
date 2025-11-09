@@ -541,10 +541,6 @@ def main(args):
         model.student.backbone.register_tokens = model_pretrained.register_tokens
         model.student.backbone.mask_token = model_pretrained.mask_token
 
-        print(model.state_dict().keys())
-        print(model_pretrained.state_dict().keys())
-        print(model_pretrained.pos_embed.shape) #1, 1360, 384. We lose pos embed because it was 518
-        print(model.student.backbone.pos_embed.shape) #1, 257, 384
 
         # Interpolate pos embed (only has an effect if you are training smaller model size than vitG)
         # note: the below seems to be doing 1d interpolation, but you need 2d interp
